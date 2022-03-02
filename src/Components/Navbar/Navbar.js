@@ -111,7 +111,7 @@ const Navbar = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Typography variant="h5">IOT</Typography>
+              <Typography variant="h5">IOT Home Appliances Data</Typography>
               {/* <Typography variant="body1">IOT</Typography> 
                 <Typography variant="body1">IOT</Typography> */}
             </Stack>

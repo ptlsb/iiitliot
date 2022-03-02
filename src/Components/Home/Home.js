@@ -10,9 +10,11 @@ import {
   Button,
   TextField,
   CircularProgress,
+  Alert,
 } from "@mui/material";
 
-import {List,ListItem,ListItemButton,Divider,ListItemText} from '@mui/material';
+// Custom Components
+import SensorData from "./SensorData";
 
 // Icons
 import SearchIcon from "@mui/icons-material/YoutubeSearchedFor";
@@ -23,6 +25,7 @@ const Home = () => {
   const [sensor, setSensor] = useState("");
   const [resData, setResData] = useState([]);
   const [dateTime, setDateTime] = useState("");
+  const [alertShow, setAlertShow] = useState(false);
 
   // Component Mounted
   useEffect(() => {
@@ -34,24 +37,40 @@ const Home = () => {
     // })
   }, []);
 
+  const uniqueSensor = (sensorName) => {
+    // console.log(sensorName);
+    for (let i = 0; i < resData.length; i++) {
+      if (resData[i].sensor === sensorName) return false;
+    }
+    return true;
+  };
+
   const handelSubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
-    axios
-      .post("https://iiitliot.herokuapp.com/getinfo", { sensor: sensor })
-      .then((data) => {
-        console.log(data.data);
-        setLoading(false);
-        setResData(prev => {
-           return [...Array.from(prev),data.data];  
+    if (uniqueSensor(sensor)) {
+      axios
+        .post("https://iiitliot.herokuapp.com/getinfo", { sensor: sensor })
+        .then((data) => {
+          // console.log(data.data);
+          if (data.data.success) {
+            setResData((prev) => {
+              return [...Array.from(prev), data.data];
+            });
+          } else {
+            setAlertShow(true);
+            setTimeout(() => {
+              setAlertShow(false);
+            }, 5000);
+          }
+          setLoading(false);
+        })
+        .catch((error) => {
+          setLoading(false);
+          // console.log(error);
         });
-      })
-      .catch((error) => {
-        setLoading(false);
-        console.log(error);
-      });
+    } else setLoading(false);
   };
-
 
   return (
     <Stack
@@ -60,7 +79,7 @@ const Home = () => {
       justifyContent="center"
       alignItems="center"
     >
-        <form onSubmit={handelSubmit}>
+      <form onSubmit={handelSubmit}>
         <Stack spacing={2} sx={{ maxWidth: 400 }}>
           <TextField
             label="Sensor Name"
@@ -80,36 +99,17 @@ const Home = () => {
           >
             Submit
           </Button>
+          {alertShow ? <Alert severity="error">Sensor Not Found</Alert> : null}
         </Stack>
       </form>
-      <Typography variant="h3">Data Recieved By ESP32</Typography>
+      <Typography variant="h6">Data Recieved By ESP32</Typography>
       {resData ? (
-        <Stack direction="row" spacing={1} sx={{overflowX:"auto"}}>
-            {resData.map((data)=>(
-            <List>
-            <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Reading" secondary={data?.reading}/>
-            </ListItemButton>
-          </ListItem>
-          <Divider/>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Sensor" secondary={data?.sensor}/>
-            </ListItemButton>
-          </ListItem>
-          <Divider/>
-          <ListItem disablePadding>
-            <ListItemButton>
-              <ListItemText primary="Time" secondary={data?.time}/>
-            </ListItemButton>
-          </ListItem>
-        </List>
-        ))}
+        <Stack direction="row" spacing={1} sx={{ overflowX: "auto" }}>
+          {resData.map((data, i) => (
+            <SensorData key={i} data={data} />
+          ))}
         </Stack>
       ) : null}
-
-      
     </Stack>
   );
 };

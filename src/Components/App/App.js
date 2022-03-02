@@ -14,7 +14,6 @@ const App = () => {
     <div className="App">
       <Navbar />
       <Home />
-      <SignIn/>
       <SignUp/>
       <Footer />
       {/* <Router>

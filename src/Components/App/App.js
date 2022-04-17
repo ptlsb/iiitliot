@@ -5,6 +5,8 @@ import Footer from "../Footer/Footer";
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignUp/SignIn";
 import { Router, Routes, Route } from "react-router-dom";
+import Speedo from "../Speedometer/Speedo";
+// import Carousel from "../Carousel/Carousel";
 
 // Custom Css
 import "./App.css";
@@ -13,8 +15,9 @@ const App = () => {
   return (
     <div className="App">
       <Navbar />
+      {/* <Carousel/> */}
       <Home />
-      <SignUp/>
+      {/* <SignUp/> */}
       <Footer />
       {/* <Router>
         <div>

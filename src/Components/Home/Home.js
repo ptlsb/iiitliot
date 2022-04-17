@@ -1,4 +1,7 @@
 import { React, useState, useEffect } from "react";
+import ReactSpeedometer from "react-d3-speedometer";
+
+import Speedo from "../Speedometer/Speedo";
 
 // API
 import axios from "axios";
@@ -52,7 +55,7 @@ const Home = () => {
       axios
         .post("https://iiitliot.herokuapp.com/getinfo", { sensor: sensor })
         .then((data) => {
-          // console.log(data.data);
+          console.log(data.data);
           if (data.data.success) {
             setResData((prev) => {
               return [...Array.from(prev), data.data];
@@ -105,8 +108,8 @@ const Home = () => {
       <Typography variant="h6">Data Recieved By ESP32</Typography>
       {resData ? (
         <Stack direction="row" spacing={1} sx={{ overflowX: "auto" }}>
-          {resData.map((data, i) => (
-            <SensorData key={i} data={data} />
+          {resData.map((data,i) => (
+            <Speedo data={data} key={i} type="current" />
           ))}
         </Stack>
       ) : null}

@@ -1,4 +1,4 @@
-import { ReactChild, useState } from "react";
+import { React, useState } from "react";
 
 // MUI Components
 import {
@@ -19,24 +19,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 // Custom Components
 import SignIn from "./SignIn";
 
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
 const theme = createTheme();
 
 const SignUp = () => {
@@ -55,15 +37,20 @@ const SignUp = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="sm" sx={{
+        padding : "10px 0px",
+        borderRadius:"10px",
+        border:"2px solid rgba(0,0,0,0.3)",
+        backgroundColor : Panel === 0 ? "rgba(248,252,255,1)" : "rgba(254,245,255,0.2)",
+      }}>
         <Button
           onClick={() => {
             if (Panel === 0) setPanel(1);
             else setPanel(0);
           }}
-          color="warning"
-          variant="outlined"
-          color={Panel === 0 ? "primary" : "secondary"}
+          variant="filled"
+          color=""
+          fullWidth
         >
           {Panel === 1 ? "SignUp" : "SignIn"}
         </Button>
@@ -80,7 +67,7 @@ const SignUp = () => {
               <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-              Sign up
+              Sign Up
             </Typography>
             <Box
               component="form"
@@ -151,7 +138,7 @@ const SignUp = () => {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link href="#" variant="body2">
-                    Already have an account? Sign in
+                    Already have an account? Sign In
                   </Link>
                 </Grid>
               </Grid>

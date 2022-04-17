@@ -1,4 +1,4 @@
-import { React, useState, useEffect } from "react";
+import { React, useState} from "react";
 import axios from "axios";
 
 import { Stack, Button, CircularProgress } from "@mui/material";
@@ -55,10 +55,22 @@ const SensorData = (props) => {
       <List>
         <ListItem disablePadding>
           <ListItemButton>
-            <ListItemText primary="Reading" secondary={sensor?.reading} />
+            <ListItemText primary="Current" secondary={sensor?.current} />
           </ListItemButton>
         </ListItem>
         <Divider />
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Voltage" secondary={sensor?.voltage} />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+        <ListItem disablePadding>
+          <ListItemButton>
+            <ListItemText primary="Power" secondary={sensor?.power} />
+          </ListItemButton>
+        </ListItem>
+        <Divider/>
         <ListItem disablePadding>
           <ListItemButton>
             <ListItemText primary="Sensor" secondary={sensor?.sensor} />

@@ -1,62 +1,49 @@
 import React, { useState, useEffect, useRef } from "react";
 import Speedometer from "react-d3-speedometer";
 import "./Speedo.css";
-import SensorData from "../Home/SensorData";
 
 // Material UI
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, Typography } from "@mui/material";
 
 const Speedo = (props) => {
-  const [value, setValue] = useState(
-    props.type === "current"
-      ? props.data.current
-      : props.data.type === "voltage"
-      ? props.data.voltage
-      : props.data.current
-  );
-  const interval = useRef(null);
-  // const generateRandom = () =>
-  //   setValue(props.value);
-  // useEffect(() => {
-  //   interval.current = setInterval(function () {
-  //     generateRandom();
-  //   }, 500);
-  //   return () => clearInterval(interval.current);
-  // }, []);
+  const power = Number(props.data.power);
+  const current = Number(props.data.current);
+  const voltage = Number(props.data.voltage);
 
   return (
     <Stack justifyContent="center" alignItems="center" sx={{ width: "100%" }}>
+      <Typography variant="legend" sx={{ textTransform: "capitalize" }}>
+        {props.type}
+      </Typography>
       <Box
         sx={{
-          border: "1px solid rgba(0,0,0,0.2)",
-          padding: "10px",
+          padding: "20px",
           maxWidth: 400,
           borderRadius: "10px",
         }}
       >
-        <Stack>
-          <Speedometer
-            minValue={0}
-            maxValue={40}
-            maxSegmentLabels={12}
-            needleHeightRatio={0.8}
-            ringWidth={15}
-            segments={4}
-            value={value}
-            segmentColors={[
-              "#b81414",
-              "#ec5555",
-              "#f2db5b",
-              "#7ab55c",
-              "#56fc03",
-              "#385828",
-            ]}
-            needleColor="#000080"
-          />
-          <Stack>
-            <SensorData data={props.data}/>
-          </Stack>
-        </Stack>
+        <Speedometer
+          minValue={0}
+          maxValue={props.max}
+          maxSegmentLabels={12}
+          needleHeightRatio={0.75}
+          ringWidth={55}
+          segments={6}
+          value={
+            props.type === "c" ? current : props.type === "v" ? voltage : power
+          }
+          segmentColors={[
+            "#b81414",
+            "#ec5555",
+            "#f6961e",
+            "#ecdb23",
+            "#aee228",
+            "#6bd72d",
+          ]}
+          needleColor="#4287f5"
+          needleTransitionDuration={1000}
+          labelFontSize="12px"
+        />
       </Box>
     </Stack>
   );

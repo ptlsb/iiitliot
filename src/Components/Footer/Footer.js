@@ -1,4 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
 import "./Footer.css";
 // MUI Components
 import {
@@ -10,58 +12,57 @@ import {
   BottomNavigation,
 } from "@mui/material";
 
+// Icons
+import { SettingsInputComponentSharp, Twitter } from "@mui/icons-material";
+import { Facebook } from "@mui/icons-material";
+import { LinkedIn } from "@mui/icons-material";
+import { GitHub } from "@mui/icons-material";
+
 const Footer = () => {
   return (
     <footer className="footer-distributed">
       <div className="footer-left">
         <h3>
-          <span>Logo</span>
+          <span>Home Appliances Data</span>
         </h3>
-
         <p className="footer-links">
-          <a className="footer-links-a" href="#">
+          <Link className="footer-links-a" to="/">
             Home
-          </a>
+          </Link>
           ·
-          <a className="footer-links-a" href="#">
-            Blog
-          </a>
+          <Link className="footer-links-Link" to="/sensor">
+            Sensor
+          </Link>
           ·
-          <a className="footer-links-a" href="#">
-            About
-          </a>
-          ·
-          <a className="footer-links-a" href="#">
-            Contact
-          </a>
+          <Link className="footer-links-Link" to="/login">
+            Login
+          </Link>
         </p>
 
-        <p className="footer-company-name">Company Name © 2022</p>
+        <p className="footer-company-name">Home Appliances Data © 2022</p>
 
         <div className="footer-icons">
-          <a href="#">
-            <i className="fa fa-facebook"></i>
-          </a>
-          <a href="#">
-            <i className="fa fa-twitter"></i>
-          </a>
-          <a href="#">
-            <i className="fa fa-linkedin"></i>
-          </a>
-          <a href="#">
-            <i className="fa fa-github"></i>
-          </a>
+          <Link to="https://www.facebook.com/kushagra.patel.581/">
+            <Facebook color="inherit" />
+          </Link>
+          <Link to="https://twitter.com/kushagra_23_12">
+            <Twitter />
+          </Link>
+          <Link to="https://www.linkedin.com/in/kushagra-patel-176492196/">
+            <LinkedIn />
+          </Link>
+          <Link to="https://github.com/ptlsb">
+            <GitHub />
+          </Link>
         </div>
       </div>
 
       <div className="footer-right">
         <p>Contact Us</p>
-
-        <form action="#" method="post">
-          <input type="text" name="email" placeholder="Email" />
-          <textarea name="message" placeholder="Message"></textarea>
-          <button>Send</button>
-        </form>
+        <br />
+        <p>+91 97544 48201</p>
+        <br />
+        <p>contact@gmail.com</p>
       </div>
     </footer>
   );

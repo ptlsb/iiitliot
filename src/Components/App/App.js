@@ -1,12 +1,16 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+// Components
+import SignUp from "../Auth/SignUp";
+import SignIn from "../Auth/SignIn";
+import Verify from "../Auth/Verify";
 import Navbar from "../Navbar/Navbar";
 import Home from "../Home/Home";
+import Sensor from "../Sensor/Sensor";
 import Footer from "../Footer/Footer";
-import SignUp from "../SignUp/SignUp";
-import SignIn from "../SignUp/SignIn";
-import { Router, Routes, Route } from "react-router-dom";
 import Speedo from "../Speedometer/Speedo";
-// import Carousel from "../Carousel/Carousel";
+import Testimonial from "../Testimonial/Testimonial";
 
 // Custom Css
 import "./App.css";
@@ -14,27 +18,21 @@ import "./App.css";
 const App = () => {
   return (
     <div className="App">
-      <Navbar />
-      {/* <Carousel/> */}
-      <Home />
-      {/* <SignUp/> */}
-      <Footer />
-      {/* <Router>
-        <div>
-          <Routes>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/forget-password" component={ForgetPasswordPage} />
-            <Route path="/home" component={Home} />
-            <Route path="/">
-              <Navbar />
-              <Home />
-              <Footer />
-            </Route>
-          </Routes>
-        </div>
-      </Router> */}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<SignIn />} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signup/:email" element={<Verify />} />
+          <Route
+            path="/sensor"
+            element={[<Navbar />, <Sensor />, <Footer />]}
+          />
+          <Route
+            path="/"
+            element={[<Navbar />, <Home />, <Testimonial />, <Footer />]}
+          />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 };

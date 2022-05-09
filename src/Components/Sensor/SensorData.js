@@ -42,7 +42,7 @@ const SensorData = (props) => {
         padding: "16px",
       }}
     >
-      <Button
+      {/* <Button
         startIcon={
           Loading ? (
             <CircularProgress size="15" color="inherit" />
@@ -56,10 +56,10 @@ const SensorData = (props) => {
         disabled={Loading}
       >
         Update
-      </Button>
+      </Button> */}
       <Stack
         direction="row"
-        divider={<Divider orientation="vertical" />}
+        divider={<Divider orientation="vertical" flexItem />}
         spacing={2}
       >
         <Stack>

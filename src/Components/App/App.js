@@ -9,8 +9,6 @@ import Navbar from "../Navbar/Navbar";
 import Home from "../Home/Home";
 import Sensor from "../Sensor/Sensor";
 import Footer from "../Footer/Footer";
-import Speedo from "../Speedometer/Speedo";
-import Testimonial from "../Testimonial/Testimonial";
 
 // Custom Css
 import "./App.css";
@@ -27,10 +25,7 @@ const App = () => {
             path="/sensor"
             element={[<Navbar />, <Sensor />, <Footer />]}
           />
-          <Route
-            path="/"
-            element={[<Navbar />, <Home />, <Testimonial />, <Footer />]}
-          />
+          <Route path="/" element={[<Navbar />, <Home />, <Footer />]} />
         </Routes>
       </BrowserRouter>
     </div>

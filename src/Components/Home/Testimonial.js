@@ -4,7 +4,7 @@ import "./Testimonial.css";
 const Testimonial = () => {
   return (
     <>
-      <div className="Testimonial-cont"></div>
+      {/* <div className="Testimonial-cont"></div> */}
       {/* <section class="t-bq-section" id="paul">
         <div class="t-bq-wrapper t-bq-wrapper-boxed">
           <div class="t-bq-quote t-bq-quote-paul">

@@ -1,13 +1,3 @@
-/* ========== 00. General Styling ========== */
-
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap");
-
-* {
-  box-sizing: border-box;
-  outline: 0;
-  transition: all 0.3s ease;
-}
-
 .Testimonial-cont {
   margin: 0;
   margin-top: 60px;
@@ -52,8 +42,7 @@ section.t-bq-section {
 
 .t-bq-quote-paul .t-bq-quote-paul-pattern {
   flex-basis: 80px;
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png")
-    repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png") repeat;
   border-radius: 10px 0 0 10px;
 }
 
@@ -85,8 +74,7 @@ section.t-bq-section {
   left: 45px;
   width: 70px;
   height: 70px;
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg")
-    center center no-repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg") center center no-repeat;
   background-size: cover;
   border-radius: 50%;
 }
@@ -156,8 +144,7 @@ section.t-bq-section {
   height: 80px;
   align-items: center;
   justify-content: flex-start;
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png")
-    repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png") repeat;
   border-radius: 10px 10px 0 0;
 }
 
@@ -181,8 +168,7 @@ section.t-bq-section {
   left: calc(50% - 35px);
   width: 70px;
   height: 70px;
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg")
-    center center no-repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg") center center no-repeat;
   background-size: cover;
   border-radius: 50%;
 }
@@ -240,8 +226,7 @@ section.t-bq-section {
 }
 
 .t-bq-quote-horace .t-bq-quote-horace-base {
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png")
-    repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/hexabump.png") repeat;
   color: #ffffff;
   font-weight: bold;
   padding: 60px;
@@ -288,8 +273,7 @@ section.t-bq-section {
 .t-bq-quote-horace .t-bq-quote-horace-userpic {
   width: 70px;
   height: 70px;
-  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg")
-    center center no-repeat;
+  background: url("https://raw.githubusercontent.com/taviskaron/t-div-blockquotes/main/img/strug.jpg") center center no-repeat;
   background-size: cover;
   border-radius: 50%;
   margin-right: 20px;
